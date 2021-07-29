@@ -160,6 +160,7 @@ function *iterateCandidatePaths(request, relativeTo) {
  * @param {import("fs")} fs The file system.
  * @param {string} request Tha package name or file path to resolve.
  * @param {string} relativeTo Tha path to the file what called this resolving.
+ * @throws {Error} If cannot find module.
  * @returns {void}
  */
 function fsResolve(fs, request, relativeTo) {
@@ -215,6 +216,7 @@ function compile(fs, stubs, filePath, content) {
  * @param {import("fs")} fs The file system.
  * @param {Object} stubs The stubs.
  * @param {string} absolutePath Tha file path to import.
+ * @throws {Error} If cannot find module.
  * @returns {void}
  */
 function fsImportFresh(fs, stubs, absolutePath) {
