@@ -2909,7 +2909,7 @@ var a = "test2";
             const version = linter.version;
 
             assert.isString(version);
-            assert.isTrue(parseInt(version[0], 10) >= 3);
+            assert.isTrue(Number.parseInt(version[0], 10) >= 3);
         });
     });
 

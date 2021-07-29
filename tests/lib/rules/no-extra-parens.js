@@ -2308,7 +2308,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = ((b in c) && (d in e)); ;);",
             output: "for (let a = (b in c && d in e); ;);",
-            errors: Array(2).fill(
+            errors: Array.from({ length: 2 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2767,7 +2767,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = !((b in c) && (d in e)); ;);",
             output: "for (let a = !(b in c && d in e); ;);",
-            errors: Array(2).fill(
+            errors: Array.from({ length: 2 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2812,7 +2812,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (x && (b in c)), d = () => { for ((e in f); ;); for ((y && (g in h)); ;); }; ;); for((i in j); ;);",
             output: "for (let a = (x && b in c), d = () => { for ((e in f); ;); for ((y && g in h); ;); }; ;); for((i in j); ;);",
-            errors: Array(2).fill(
+            errors: Array.from({ length: 2 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2821,7 +2821,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (x && (b in c)), d = () => { for ((y && (e in f)); ;); for ((z && (g in h)); ;); }; ;); for((w && (i in j)); ;);",
             output: "for (let a = (x && b in c), d = () => { for ((y && e in f); ;); for ((z && g in h); ;); }; ;); for((w && i in j); ;);",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2832,7 +2832,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (b); a > (b); a = (b)) a = (b); a = (b);",
             output: "for (let a = b; a > b; a = b) a = b; a = b;",
-            errors: Array(5).fill(
+            errors: Array.from({ length: 5 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2841,7 +2841,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for ((a = b); (a > b); (a = b)) (a = b); (a = b);",
             output: "for (a = b; a > b; a = b) a = b; a = b;",
-            errors: Array(5).fill(
+            errors: Array.from({ length: 5 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2850,7 +2850,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = b; a > (b); a = (b)) a = (b); a = (b);",
             output: "for (let a = b; a > b; a = b) a = b; a = b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2859,7 +2859,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = b; (a > b); (a = b)) (a = b); (a = b);",
             output: "for (let a = b; a > b; a = b) a = b; a = b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2868,7 +2868,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (; a > (b); a = (b)) a = (b); a = (b);",
             output: "for (; a > b; a = b) a = b; a = b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2877,7 +2877,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (; (a > b); (a = b)) (a = b); (a = b);",
             output: "for (; a > b; a = b) a = b; a = b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2886,7 +2886,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (b); a = (b in c); a = (b in c)) a = (b in c); a = (b in c);",
             output: "for (let a = b; a = b in c; a = b in c) a = b in c; a = b in c;",
-            errors: Array(5).fill(
+            errors: Array.from({ length: 5 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2895,7 +2895,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (b); (a in b); (a in b)) (a in b); (a in b);",
             output: "for (let a = b; a in b; a in b) a in b; a in b;",
-            errors: Array(5).fill(
+            errors: Array.from({ length: 5 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2904,7 +2904,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = b; a = (b in c); a = (b in c)) a = (b in c); a = (b in c);",
             output: "for (let a = b; a = b in c; a = b in c) a = b in c; a = b in c;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2913,7 +2913,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = b; (a in b); (a in b)) (a in b); (a in b);",
             output: "for (let a = b; a in b; a in b) a in b; a in b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2922,7 +2922,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (; a = (b in c); a = (b in c)) a = (b in c); a = (b in c);",
             output: "for (; a = b in c; a = b in c) a = b in c; a = b in c;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2931,7 +2931,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (; (a in b); (a in b)) (a in b); (a in b);",
             output: "for (; a in b; a in b) a in b; a in b;",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }
@@ -2940,7 +2940,7 @@ ruleTester.run("no-extra-parens", rule, {
         {
             code: "for (let a = (b + c), d = () => { for ((e + f); ;); for ((g + h); ;); }; ;); for((i + j); ;);",
             output: "for (let a = b + c, d = () => { for (e + f; ;); for (g + h; ;); }; ;); for(i + j; ;);",
-            errors: Array(4).fill(
+            errors: Array.from({ length: 4 }).fill(
                 {
                     messageId: "unexpected"
                 }

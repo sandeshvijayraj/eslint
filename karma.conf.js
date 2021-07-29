@@ -2,13 +2,7 @@
 const os = require("os");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
-if (os.arch() === "arm64") {
-
-    // For arm64 architecture, install chromium-browser using "apt-get install chromium-browser"
-    process.env.CHROME_BIN = "/usr/bin/chromium-browser";
-} else {
-    process.env.CHROME_BIN = require("puppeteer").executablePath();
-}
+process.env.CHROME_BIN = os.arch() === "arm64" ? "/usr/bin/chromium-browser" : require("puppeteer").executablePath();
 
 module.exports = function(config) {
     config.set({
@@ -111,6 +105,6 @@ module.exports = function(config) {
          * Concurrency level
          * how many browser should be started simultaneous
          */
-        concurrency: Infinity
+        concurrency: Number.POSITIVE_INFINITY
     });
 };

@@ -4,6 +4,10 @@ extends:
     - "plugin:node/recommended"
     - "plugin:jsdoc/recommended"
     - "plugin:eslint-comments/recommended"
+    # - "plugin:sonarjs/recommended"
+    - "plugin:unicorn/recommended"
+parserOptions:
+    sourceType: "script"
 settings:
     jsdoc:
         tagNamePreference:
@@ -90,7 +94,7 @@ rules:
     # jsdoc/check-indentation: "error" # Revisit if allowing configurable spaces after tag line breaks
     # jsdoc/check-line-alignment: ["error", "never"]
     jsdoc/check-syntax: "error"
-    # jsdoc/check-types': ["error', { exemptTagContexts: [ { tag: "typedef", types: ["object", "GenericObject"] } ] }
+    # jsdoc/check-types: ["error", { exemptTagContexts: [ { tag: "typedef", types: ["object", "GenericObject"] } ] }
 
     jsdoc/check-values: ["error", { allowedLicenses: true }]
     jsdoc/newline-after-description: ["error", "never"]
@@ -270,6 +274,17 @@ rules:
     semi: "error"
     semi-spacing: ["error", {before: false, after: true}]
     semi-style: "error"
+
+    sonarjs/max-switch-cases: "off"
+    sonarjs/no-collapsible-if: "off"
+    sonarjs/no-duplicate-string: "off"
+    sonarjs/no-identical-functions: "off"
+    sonarjs/no-small-switch: "off"
+    sonarjs/prefer-immediate-return: "off"
+    sonarjs/cognitive-complexity: "off"
+    sonarjs/no-nested-switch: "off"
+    sonarjs/no-nested-template-literals: "off"
+
     space-before-blocks: "error"
     space-before-function-paren: ["error", {
         "anonymous": "never",
@@ -286,6 +301,48 @@ rules:
     template-curly-spacing: ["error", "never"]
     template-tag-spacing: "error"
     unicode-bom: "error"
+
+    unicorn/catch-error-name: "off"
+    unicorn/consistent-destructuring: "off"
+    unicorn/consistent-function-scoping: "off"
+    unicorn/empty-brace-spaces: "off"
+    unicorn/explicit-length-check: "off"
+    unicorn/filename-case: "off"
+    unicorn/import-index: "off"
+    unicorn/import-style: "off"
+    unicorn/no-array-for-each: "off"
+    unicorn/no-lonely-if: "off"
+    unicorn/no-nested-ternary: "off"
+    unicorn/no-null: "off"
+    unicorn/no-array-callback-reference: "off" # good but cumbersome
+    unicorn/no-array-reduce: "off"
+    unicorn/no-unreadable-array-destructuring: "off"
+    unicorn/no-useless-undefined: "off"
+    unicorn/numeric-separators-style: "off"
+
+    unicorn/prefer-array-flat: "off"
+    unicorn/prefer-array-flat-map: "off"
+
+    unicorn/prevent-abbreviations: "off"
+    unicorn/prefer-exponentiation-operator: "off"
+    unicorn/prefer-module: "off"
+    unicorn/prefer-node-protocol: "off"
+
+    unicorn/prefer-number-properties: "warn"
+    unicorn/prefer-prototype-methods: "off"
+    unicorn/prefer-set-has: "off"
+    unicorn/prefer-spread: "off"
+    unicorn/prefer-switch: "off"
+    unicorn/prefer-string-slice: "off"
+    unicorn/prefer-optional-catch-binding: "off"
+    unicorn/throw-new-error: "off"
+
+    unicorn/better-regex: ["error", {sortCharacterClasses: false}]
+    unicorn/custom-error-definition: "error"
+    unicorn/no-unsafe-regex: "error"
+
+    unicorn/expiring-todo-comments: ["error", {allowWarningComments: true, terms: ["todo"]}]
+
     wrap-iife: "error"
     yield-star-spacing: "error"
     yoda: ["error", "never", { exceptRange: true }]
