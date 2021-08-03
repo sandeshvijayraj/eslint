@@ -90,7 +90,7 @@ require("espree");
 const ERRORED = Symbol("errored");
 const proxyquire = new class extends Proxyquire {
     _require(...args) {
-        const retv = super._require(...args); // eslint-disable-line no-underscore-dangle
+        const retv = super._require(...args); // eslint-disable-line no-underscore-dangle -- Proxyquire API
 
         if (retv[ERRORED]) {
             throw retv[ERRORED];

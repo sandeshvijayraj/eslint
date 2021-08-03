@@ -95,7 +95,7 @@ describe("ESLint", () => {
          * exceeds the default test timeout, so raise it just for this hook.
          * Mocha uses `this` to set timeouts on an individual hook level.
          */
-        this.timeout(60 * 1000); // eslint-disable-line no-invalid-this
+        this.timeout(60 * 1000); // eslint-disable-line no-invalid-this -- Mocha API
         shell.mkdir("-p", fixtureDir);
         shell.cp("-r", "./tests/fixtures/.", fixtureDir);
     });
@@ -123,7 +123,7 @@ describe("ESLint", () => {
 
         it("should report one fatal message when given a path by --ignore-path that is not a file when ignore is true.", () => {
             assert.throws(() => {
-                // eslint-disable-next-line no-new
+                // eslint-disable-next-line no-new -- Check for throwing
                 new ESLint({ ignorePath: fixtureDir });
             }, new RegExp(escapeStringRegExp(`Cannot read .eslintignore file: ${fixtureDir}\nError: EISDIR: illegal operation on a directory, read`), "u"));
         });
@@ -132,7 +132,7 @@ describe("ESLint", () => {
         it("should not modify baseConfig when format is specified", () => {
             const customBaseConfig = { root: true };
 
-            new ESLint({ baseConfig: customBaseConfig }); // eslint-disable-line no-new
+            new ESLint({ baseConfig: customBaseConfig }); // eslint-disable-line no-new -- Check for argument side effects
 
             assert.deepStrictEqual(customBaseConfig, { root: true });
         });
@@ -787,7 +787,7 @@ describe("ESLint", () => {
             const Module = require("module");
             let originalFindPath = null;
 
-            /* eslint-disable no-underscore-dangle */
+            /* eslint-disable no-underscore-dangle -- Override Node API */
             before(() => {
                 originalFindPath = Module._findPath;
                 Module._findPath = function(id, ...otherArgs) {
@@ -800,7 +800,7 @@ describe("ESLint", () => {
             after(() => {
                 Module._findPath = originalFindPath;
             });
-            /* eslint-enable no-underscore-dangle */
+            /* eslint-enable no-underscore-dangle -- Override Node API */
 
             it("should resolve 'plugins:[\"@scope\"]' to 'node_modules/@scope/eslint-plugin'.", async () => {
                 eslint = new ESLint({ cwd: getFixturePath("plugin-shorthand/basic") });
@@ -4298,7 +4298,7 @@ describe("ESLint", () => {
 
                 assert.throws(() => {
                     try {
-                        // eslint-disable-next-line no-new
+                        // eslint-disable-next-line no-new -- Check for error
                         new ESLint({ cwd });
                     } catch (error) {
                         assert.strictEqual(error.messageTemplate, "failed-to-read-json");
@@ -4324,7 +4324,7 @@ describe("ESLint", () => {
                 const cwd = getFixturePath("ignored-paths", "bad-package-json-ignore");
 
                 assert.throws(() => {
-                    // eslint-disable-next-line no-new
+                    // eslint-disable-next-line no-new -- Check for throwing
                     new ESLint({ cwd });
                 }, /Package\.json eslintIgnore property requires an array of paths/u);
             });
@@ -4453,7 +4453,7 @@ describe("ESLint", () => {
                 const ignorePath = getFixturePath("ignored-paths", "not-a-directory", ".foobaz");
 
                 assert.throws(() => {
-                    // eslint-disable-next-line no-new
+                    // eslint-disable-next-line no-new -- Check for throwing
                     new ESLint({ ignorePath, cwd });
                 }, /Cannot read \.eslintignore file/u);
             });

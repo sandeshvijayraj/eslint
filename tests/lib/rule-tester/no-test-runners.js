@@ -1,4 +1,4 @@
-/* eslint-disable no-global-assign*/
+/* eslint-disable no-global-assign -- Resetting Mocha globals */
 /**
  * @fileoverview Tests for RuleTester without any test runner
  * @author Weijia Wang <starkwang@126.com>
